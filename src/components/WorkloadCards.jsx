@@ -10,7 +10,9 @@ export default function WorkloadCards() {
     taskIndex: null,
   });
 
-  const API_BASE = "https://jobcard-backend-h59n.onrender.com";
+  // ✅ Use environment variable for backend URL
+  const API_BASE =
+    import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
 
   // ✅ Fetch tasks from backend
   useEffect(() => {
@@ -29,8 +31,9 @@ export default function WorkloadCards() {
     }).catch(() => toast.error("⚠️ Failed to save tasks"));
   };
 
+  // 🎉 Confetti animation
   const triggerConfetti = () => {
-    const duration = 1 * 1000;
+    const duration = 1000;
     const end = Date.now() + duration;
 
     (function frame() {
@@ -48,12 +51,11 @@ export default function WorkloadCards() {
         origin: { x: 1 },
         colors: ["#00ffcc", "#33ccff", "#66ff99", "#ffff66"],
       });
-      if (Date.now() < end) {
-        requestAnimationFrame(frame);
-      }
+      if (Date.now() < end) requestAnimationFrame(frame);
     })();
   };
 
+  // ✅ Toggle task done/undone
   const toggleTask = (devIndex, taskIndex) => {
     const newDevs = [...developers];
     const task = newDevs[devIndex].tasks[taskIndex];
@@ -62,52 +64,55 @@ export default function WorkloadCards() {
     updateBackend(newDevs);
 
     if (task.done) {
-  triggerConfetti();
+      triggerConfetti();
 
-  // 🎯 Step 1: Random motivational messages
-  const messages = [
-    "🎉 Task completed! Take a sip of water 💧",
-    "🔥 You’re on fire! Keep going!",
-    "💪 Another one bites the dust!",
-    "🌟 You did it! Great job!",
-    "🚀 One step closer to your goals!",
-    "👏 Boom! Another task crushed!",
-    "🍀 Lucky day! Task done and dusted!",
-    "☕ Time for a short break — you earned it!",
-    "🎯 Focus level: Pro! Keep it up!",
-    "✨ Smooth move! Task complete!"
-  ];
+      // 🎯 Random motivational messages
+      const messages = [
+        "🎉 Task completed! Take a sip of water 💧",
+        "🔥 You’re on fire! Keep going!",
+        "💪 Another one bites the dust!",
+        "🌟 You did it! Great job!",
+        "🚀 One step closer to your goals!",
+        "👏 Boom! Another task crushed!",
+        "🍀 Lucky day! Task done and dusted!",
+        "☕ Time for a short break — you earned it!",
+        "🎯 Focus level: Pro! Keep it up!",
+        "✨ Smooth move! Task complete!",
+      ];
 
-  // 🎨 Step 2: Stylish random color themes
-  const toastStyles = [
-    { background: "#1a1a1a", color: "#00ffcc" },   // Neon teal
-    { background: "#222", color: "#ffcc00" },      // Yellow glow
-    { background: "#0a0a0a", color: "#ff66b2" },   // Pink neon
-    { background: "#141414", color: "#66ff99" },   // Mint green
-    { background: "#000", color: "#ff4444" },      // Red hot
-    { background: "#101010", color: "#66ccff" },   // Cool blue
-  ];
+      // 🎨 Random color themes
+      const toastStyles = [
+        { background: "#1a1a1a", color: "#00ffcc" }, // Neon teal
+        { background: "#222", color: "#ffcc00" }, // Yellow glow
+        { background: "#0a0a0a", color: "#ff66b2" }, // Pink neon
+        { background: "#141414", color: "#66ff99" }, // Mint green
+        { background: "#000", color: "#ff4444" }, // Red hot
+        { background: "#101010", color: "#66ccff" }, // Cool blue
+      ];
 
-  // 🎲 Step 3: Random message and style
-  const randomMessage = messages[Math.floor(Math.random() * messages.length)];
-  const randomStyle = toastStyles[Math.floor(Math.random() * toastStyles.length)];
+      // 🎲 Random message + style
+      const randomMessage =
+        messages[Math.floor(Math.random() * messages.length)];
+      const randomStyle =
+        toastStyles[Math.floor(Math.random() * toastStyles.length)];
 
-  // 🎉 Step 4: Big, bold, animated toast
-  toast.success(randomMessage, {
-    duration: 3500,
-    style: {
-      fontSize: "1.5rem",
-      fontWeight: "600",
-      padding: "25px 35px",
-      borderRadius: "16px",
-      boxShadow: "0 0 25px rgba(255,255,255,0.15)",
-      textAlign: "center",
-      ...randomStyle,
-    },
-  });
-}
+      // 🎉 Fancy toast
+      toast.success(randomMessage, {
+        duration: 3500,
+        style: {
+          fontSize: "1.5rem",
+          fontWeight: "600",
+          padding: "25px 35px",
+          borderRadius: "16px",
+          boxShadow: "0 0 25px rgba(255,255,255,0.15)",
+          textAlign: "center",
+          ...randomStyle,
+        },
+      });
+    }
   };
 
+  // ✅ Edit task
   const handleEdit = (devIndex, taskIndex, newText) => {
     const newDevs = [...developers];
     newDevs[devIndex].tasks[taskIndex].text = newText;
@@ -169,7 +174,10 @@ export default function WorkloadCards() {
       </div>
 
       <footer>
-        <p>“Code is like humor. When you have to explain it, it’s bad.” — Cory House</p>
+        <p>
+          “Code is like humor. When you have to explain it, it’s bad.” — Cory
+          House
+        </p>
         <span>Developed by Yash © 2025</span>
       </footer>
     </div>
