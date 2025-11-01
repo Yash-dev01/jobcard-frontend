@@ -1,0 +1,109 @@
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: white;
+}
+
+.app {
+  text-align: center;
+  padding: 40px 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 40px;
+  font-weight: 700;
+  color: #f5f5f5;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 40px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 35px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 50px rgba(0, 255, 170, 0.4);
+}
+
+.dev-name {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #00ffe0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  font-size: 1.3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 18px 0;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 14px 22px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+li:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.02);
+}
+
+.completed {
+  background: rgba(0, 255, 127, 0.3);
+  color: #b3ffcc;
+  text-decoration: line-through;
+}
+
+.glow {
+  animation: glowPulse 1.5s ease-in-out;
+}
+
+@keyframes glowPulse {
+  0% {
+    box-shadow: 0 0 0px #00ff99;
+  }
+  50% {
+    box-shadow: 0 0 25px #00ffcc;
+  }
+  100% {
+    box-shadow: 0 0 0px #00ff99;
+  }
+}
+
+footer {
+  margin-top: 60px;
+  font-size: 1.1rem;
+  color: #aaa;
+  text-align: center;
+  line-height: 1.6;
+}
+
+footer p {
+  margin: 10px 0;
+  font-style: italic;
+  color: #00ffe0;
+}
