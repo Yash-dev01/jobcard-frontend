@@ -1,18 +1,37 @@
-# React + Vite
+# 🚀 Jobcard Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, interactive ERP Workload Dashboard for tracking developer tasks in real-time — complete with confetti celebrations 🎉, editable tasks, and smooth UI animations.
 
-Currently, two official plugins are available:
+## 🧠 Features
+✅ View developer workloads and task lists  
+✅ Mark tasks as complete (with confetti effects 🎊)  
+✅ Edit tasks directly on the dashboard  
+✅ Beautiful toast notifications for motivation  
+✅ Footer quote for developer inspiration  
+✅ Data persistence via backend (Express + JSON file)  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🖥️ Tech Stack
+- **Frontend:** React + Vite  
+- **Styling:** CSS + Custom animations  
+- **Toast Library:** [Sonner](https://sonner.emilkowal.ski/)  
+- **Confetti Effects:** [Canvas Confetti](https://www.npmjs.com/package/canvas-confetti)  
+- **Backend:** Express.js (hosted on Render)  
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+---
 
-Note: This will impact Vite dev & build performances.
+## 🧩 Backend API
+The backend stores and serves task data in a JSON file.
 
-## Expanding the ESLint configuration
+**Backend Repo:** [Jobcard Backend](https://github.com/Yash-dev01/jobcard-backend)  
+**Live API:** [`https://jobcard-backend-h59n.onrender.com/api/tasks`](https://jobcard-backend-h59n.onrender.com/api/tasks)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠️ Setup Instructions
+
+### 1️⃣ Clone the Repository
+```bash
+git clone https://github.com/Yash-dev01/jobcard-frontend.git
+cd jobcard-frontend
