@@ -5,10 +5,6 @@ import "./Workload.css";
 
 export default function WorkloadCards() {
   const [developers, setDevelopers] = useState([]);
-  const [editingTask, setEditingTask] = useState({
-    devIndex: null,
-    taskIndex: null,
-  });
 
   // ✅ Use environment variable for backend URL
   const API_BASE =
@@ -82,21 +78,19 @@ export default function WorkloadCards() {
 
       // 🎨 Random color themes
       const toastStyles = [
-        { background: "#1a1a1a", color: "#00ffcc" }, // Neon teal
-        { background: "#222", color: "#ffcc00" }, // Yellow glow
-        { background: "#0a0a0a", color: "#ff66b2" }, // Pink neon
-        { background: "#141414", color: "#66ff99" }, // Mint green
-        { background: "#000", color: "#ff4444" }, // Red hot
-        { background: "#101010", color: "#66ccff" }, // Cool blue
+        { background: "#1a1a1a", color: "#00ffcc" },
+        { background: "#222", color: "#ffcc00" },
+        { background: "#0a0a0a", color: "#ff66b2" },
+        { background: "#141414", color: "#66ff99" },
+        { background: "#000", color: "#ff4444" },
+        { background: "#101010", color: "#66ccff" },
       ];
 
-      // 🎲 Random message + style
       const randomMessage =
         messages[Math.floor(Math.random() * messages.length)];
       const randomStyle =
         toastStyles[Math.floor(Math.random() * toastStyles.length)];
 
-      // 🎉 Fancy toast
       toast.success(randomMessage, {
         duration: 3500,
         style: {
@@ -110,14 +104,6 @@ export default function WorkloadCards() {
         },
       });
     }
-  };
-
-  // ✅ Edit task
-  const handleEdit = (devIndex, taskIndex, newText) => {
-    const newDevs = [...developers];
-    newDevs[devIndex].tasks[taskIndex].text = newText;
-    setDevelopers(newDevs);
-    updateBackend(newDevs);
   };
 
   return (
@@ -136,30 +122,9 @@ export default function WorkloadCards() {
                   className={task.done ? "completed glow" : ""}
                   onClick={() => toggleTask(devIndex, taskIndex)}
                 >
-                  {editingTask.devIndex === devIndex &&
-                  editingTask.taskIndex === taskIndex ? (
-                    <input
-                      type="text"
-                      value={task.text}
-                      onChange={(e) =>
-                        handleEdit(devIndex, taskIndex, e.target.value)
-                      }
-                      onBlur={() =>
-                        setEditingTask({ devIndex: null, taskIndex: null })
-                      }
-                      autoFocus
-                    />
-                  ) : (
-                    <span
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setEditingTask({ devIndex, taskIndex });
-                      }}
-                      title="Click to edit task"
-                    >
-                      {task.text}
-                    </span>
-                  )}
+                  {/* 📝 Edit functionality removed — now static */}
+                  <span>{task.text}</span>
+
                   <input
                     type="checkbox"
                     checked={task.done}
